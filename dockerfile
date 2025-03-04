@@ -1,9 +1,10 @@
 FROM alpine:latest
 RUN apk update
-RUN apk add py-pip
-RUN apk add --no-cache python3-dev 
-RUN pip install --upgrade pip
+RUN apk add --no-cache python3 py3-pip python3-dev
 WORKDIR /app
-COPY . /app
-RUN pip --no-cache-dir install -r requirements.txt
-CMD ["flask", "--app adapter run --debug --reload"]
+COPY requirements.txt /app/
+RUN python3 -m venv venv
+RUN venv/bin/pip install --upgrade pip
+RUN venv/bin/pip install --no-cache-dir -r requirements.txt
+COPY . /app/
+CMD ["venv/bin/flask", "--app", "adapter", "run", "--debug", "--reload"]
