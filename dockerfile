@@ -7,4 +7,5 @@ RUN python3 -m venv venv
 RUN venv/bin/pip install --upgrade pip
 RUN venv/bin/pip install --no-cache-dir -r requirements.txt
 COPY . /app/
-CMD ["venv/bin/flask", "--app", "eni_adapter", "run", "--debug", "--reload"]
+EXPOSE 5000
+CMD ["venv/bin/flask", "--app", "eni_adapter", "run", "--host=0.0.0.0", "--port=5000", "--debug", "--reload"]
