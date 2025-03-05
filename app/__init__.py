@@ -33,6 +33,7 @@ def create_app(test_config=None):
         if request.method == 'POST':
             message_body = request.get_json()
             mh.routing(message_body)
+            return '{"id": 123, "body": "Message received."}', 200
         else:
             return 'Method Not Allowed', 405
 
