@@ -1,0 +1,94 @@
+{
+  "_id": "ObjectId(\"6407a48d10c0360f715824f4\")",
+  "id": "43ba02c4-4df4-4b5d-8688-d5c289f6db33",
+  "clientKey": "lowercasekey",
+  "namespace": "torch",
+  "time": {
+    "received": 1678222477304,
+    "stored": 1678222477305,
+    "lastUpdated": 1678222477420,
+    "delivered": 1678222477420
+  },
+  "state": "DELIVERED",
+  "type": "objectChange",
+  "data": {
+    "objectType": "alertStateChange",
+    "objectId": 10084,
+    "changeType": "update",
+    "changeTime": 1678222477281,
+    "objectBefore": {
+      "state": 1,
+      "score": 130,
+      "docCount": 2,
+      "time": {
+        "created": 1678220018217,
+        "lastUpdated": 1678222476039,
+        "lastEvidence": 1678222476039,
+        "breached": 1678222476039
+      },
+      "security": {
+        "orTags1": [
+          "VPB.LI"
+        ],
+        "enabled": true
+      },
+      "description": "alert for Augusto e Elena ANON: Morante Silva",
+      "id": 10084,
+      "threshold": 100,
+      "target": {
+        "id": "eoi:74990",
+        "name": "Augusto e Elena ANON: Morante Silva",
+        "status": "ACTIVE",
+        "clientScore": 130
+      },
+      "trigger": 10001,
+      "assignedUsers": [],
+      "currentStatus": {
+        "timestamp": 1678220018217,
+        "code": 100
+      }
+    },
+    "objectAfter": {
+      "state": 1,
+      "score": 430,
+      "docCount": 3,
+      "time": {
+        "created": 1678220018217,
+        "lastUpdated": 1678222477081,
+        "lastEvidence": 1678222477081,
+        "breached": 1678222476039
+      },
+      "security": {
+        "orTags1": [
+          "VPB.LI"
+        ],
+        "enabled": true
+      },
+      "description": "alert for Augusto e Elena ANON: Morante Silva",
+      "id": 10084,
+      "threshold": 100,
+      "target": {
+        "id": "eoi:74990",
+        "name": "Augusto e Elena ANON: Morante Silva",
+        "status": "ACTIVE",
+        "clientScore": 430
+      },
+      "trigger": 10001,
+      "assignedUsers": [],
+      "currentStatus": {
+        "timestamp": 1678220018217,
+        "code": 100
+      }
+    }
+  },
+  "stateHistory": [
+    {
+      "state": "STORED",
+      "timestamp": 1678222477305
+    },
+    {
+      "state": "DELIVERED",
+      "timestamp": 1678222477420
+    }
+  ]
+}

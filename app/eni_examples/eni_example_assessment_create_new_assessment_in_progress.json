@@ -1,0 +1,55 @@
+{
+  "_id": "ObjectId(\"6407544d10c0360f715824e5\")",
+  "id": "30c5e8d5-38b6-4a88-aa31-ee23ee9873c3",
+  "clientKey": "lowercasekey",
+  "namespace": "torch",
+  "time": {
+    "received": 1678201933334,
+    "stored": 1678201933335,
+    "lastUpdated": 1678201933638,
+    "delivered": 1678201933638
+  },
+  "state": "DELIVERED",
+  "type": "objectChange",
+  "data": {
+    "objectType": "assessmentStateChange",
+    "objectId": "AS-14",
+    "changeType": "create",
+    "changeTime": 1678201933314,
+    "objectBefore": null,
+    "objectAfter": {
+      "id": "AS-14",
+      "security": {
+        "enabled": true,
+        "owners": [
+          10003
+        ]
+      },
+      "state": "IN_PROGRESS",
+      "createdBy": {
+        "id": "10003",
+        "email": "ex0210",
+        "externalId": "ex0210"
+      },
+      "timeCreated": 1678201933269,
+      "timeUpdated": 1678201933269,
+      "entities": [
+        {
+          "name": "Peter Müller",
+          "entityType": "searchperson",
+          "results": {}
+        }
+      ]
+    }
+  },
+  "stateHistory": [
+    {
+      "state": "STORED",
+      "timestamp": 1678201933335
+    },
+    {
+      "state": "DELIVERED",
+      "timestamp": 1678201933638
+    }
+  ]
+}

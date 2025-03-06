@@ -1,0 +1,88 @@
+{
+  "_id": "ObjectId(\"6407545210c0360f715824e6\")",
+  "id": "ca31400b-7ad2-47e1-ac19-579aba6d2e16",
+  "clientKey": "lowercasekey",
+  "namespace": "torch",
+  "time": {
+    "received": 1678201938191,
+    "stored": 1678201938191,
+    "lastUpdated": 1678201938282,
+    "delivered": 1678201938282
+  },
+  "state": "DELIVERED",
+  "type": "objectChange",
+  "data": {
+    "objectType": "assessmentStateChange",
+    "objectId": "AS-14",
+    "changeType": "update",
+    "changeTime": 1678201938179,
+    "objectBefore": {
+      "id": "AS-14",
+      "security": {
+        "enabled": true,
+        "owners": [
+          10003
+        ]
+      },
+      "state": "IN_PROGRESS",
+      "createdBy": {
+        "id": "10003",
+        "email": "ex0210",
+        "externalId": "ex0210"
+      },
+      "timeCreated": 1678201933269,
+      "timeUpdated": 1678201933269,
+      "entities": [
+        {
+          "name": "Peter Müller",
+          "entityType": "searchperson",
+          "results": {}
+        }
+      ]
+    },
+    "objectAfter": {
+      "id": "AS-14",
+      "security": {
+        "enabled": true,
+        "owners": [
+          10003
+        ]
+      },
+      "state": "COMPLETED_WITH_HITS",
+      "createdBy": {
+        "id": "10003",
+        "email": "ex0210",
+        "externalId": "ex0210"
+      },
+      "timeCreated": 1678201933269,
+      "timeUpdated": 1678201938133,
+      "entities": [
+        {
+          "name": "Peter Müller",
+          "entityType": "searchperson",
+          "results": {
+            "docCount": 27,
+            "status": 100,
+            "assignedUsers": [
+              {
+                "id": "10003",
+                "email": "ex0210",
+                "externalId": "ex0210"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "stateHistory": [
+    {
+      "state": "STORED",
+      "timestamp": 1678201938191
+    },
+    {
+      "state": "DELIVERED",
+      "timestamp": 1678201938282
+    }
+  ]
+}

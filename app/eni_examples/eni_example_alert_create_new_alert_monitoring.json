@@ -1,0 +1,61 @@
+{
+  "_id": "ObjectId(\"640750c710c0360f715824e4\")",
+  "id": "d6c1cd8b-9c88-46de-a4e1-6dffe735e586",
+  "clientKey": "lowercasekey",
+  "namespace": "torch",
+  "time": {
+    "received": 1678201031803,
+    "stored": 1678201031804,
+    "lastUpdated": 1678201031935,
+    "delivered": 1678201031935
+  },
+  "state": "DELIVERED",
+  "type": "objectChange",
+  "data": {
+    "objectType": "alertStateChange",
+    "objectId": 10081,
+    "changeType": "create",
+    "changeTime": 1678201031761,
+    "objectBefore": null,
+    "objectAfter": {
+      "state": 0,
+      "score": 10,
+      "docCount": 1,
+      "time": {
+        "created": 1678201031282,
+        "lastUpdated": 1678201031403,
+        "lastEvidence": 1678201031403
+      },
+      "security": {
+        "orTags1": [
+          "X.ZH"
+        ],
+        "enabled": true
+      },
+      "description": "alert for Juan Antonio ANON: Pereira Carlos",
+      "id": 10081,
+      "target": {
+        "id": "eoi:242292",
+        "name": "Juan Antonio ANON: Pereira Carlos",
+        "status": "ACTIVE",
+        "clientScore": 0
+      },
+      "trigger": 10001,
+      "assignedUsers": [],
+      "currentStatus": {
+        "timestamp": 1678201031282,
+        "code": 100
+      }
+    }
+  },
+  "stateHistory": [
+    {
+      "state": "STORED",
+      "timestamp": 1678201031804
+    },
+    {
+      "state": "DELIVERED",
+      "timestamp": 1678201031935
+    }
+  ]
+}

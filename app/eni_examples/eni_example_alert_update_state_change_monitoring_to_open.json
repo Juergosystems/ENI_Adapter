@@ -1,0 +1,92 @@
+{
+  "_id": "ObjectId(\"6407a48c10c0360f715824f2\")",
+  "id": "9de384fb-ff79-4b12-b359-1d1fbd3945d8",
+  "clientKey": "lowercasekey",
+  "namespace": "torch",
+  "time": {
+    "received": 1678222476454,
+    "stored": 1678222476461,
+    "lastUpdated": 1678222476652,
+    "delivered": 1678222476652
+  },
+  "state": "DELIVERED",
+  "type": "objectChange",
+  "data": {
+    "objectType": "alertStateChange",
+    "objectId": 10085,
+    "changeType": "update",
+    "changeTime": 1678222476389,
+    "objectBefore": {
+      "state": 0,
+      "score": 30,
+      "docCount": 1,
+      "time": {
+        "created": 1678220018225,
+        "lastUpdated": 1678220018303,
+        "lastEvidence": 1678220018303
+      },
+      "security": {
+        "orTags1": [
+          "X.CH"
+        ],
+        "enabled": true
+      },
+      "description": "alert for Augusto et Helena ANON: Morante Silva",
+      "id": 10085,
+      "target": {
+        "id": "eoi:53166",
+        "name": "Augusto et Helena ANON: Morante Silva",
+        "status": "ACTIVE",
+        "clientScore": 0
+      },
+      "trigger": 10001,
+      "assignedUsers": [],
+      "currentStatus": {
+        "timestamp": 1678220018225,
+        "code": 100
+      }
+    },
+    "objectAfter": {
+      "state": 1,
+      "score": 130,
+      "docCount": 2,
+      "time": {
+        "created": 1678220018225,
+        "lastUpdated": 1678222476044,
+        "lastEvidence": 1678222476044,
+        "breached": 1678222476044
+      },
+      "security": {
+        "orTags1": [
+          "X.CH"
+        ],
+        "enabled": true
+      },
+      "description": "alert for Augusto et Helena ANON: Morante Silva",
+      "id": 10085,
+      "threshold": 100,
+      "target": {
+        "id": "eoi:53166",
+        "name": "Augusto et Helena ANON: Morante Silva",
+        "status": "ACTIVE",
+        "clientScore": 130
+      },
+      "trigger": 10001,
+      "assignedUsers": [],
+      "currentStatus": {
+        "timestamp": 1678220018225,
+        "code": 100
+      }
+    }
+  },
+  "stateHistory": [
+    {
+      "state": "STORED",
+      "timestamp": 1678222476461
+    },
+    {
+      "state": "DELIVERED",
+      "timestamp": 1678222476652
+    }
+  ]
+}

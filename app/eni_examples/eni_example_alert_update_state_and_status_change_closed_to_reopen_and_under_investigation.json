@@ -1,0 +1,128 @@
+{
+  "_id": "ObjectId(\"64074f7510c0360f715824e3\")",
+  "id": "2a3f8aa1-5b88-4ed3-9df3-2006f22091fb",
+  "clientKey": "lowercasekey",
+  "namespace": "torch",
+  "time": {
+    "received": 1678200693144,
+    "stored": 1678200693147,
+    "lastUpdated": 1678200695256,
+    "delivered": 1678200695256
+  },
+  "state": "DELIVERED",
+  "type": "objectChange",
+  "data": {
+    "objectType": "alertStateChange",
+    "objectId": 10005,
+    "changeType": "update",
+    "changeTime": 1678200693028,
+    "objectBefore": {
+      "state": 3,
+      "score": 550,
+      "docCount": 22,
+      "time": {
+        "created": 1678112290107,
+        "lastUpdated": 1678177593519,
+        "breached": 1678112290149,
+        "lastEvidence": 1678112290149,
+        "lastAssigned": 1678114410494,
+        "closed": 1678114847905,
+        "reopened": 1678177593519
+      },
+      "security": {
+        "orTags1": [
+          "X.CH"
+        ],
+        "enabled": true
+      },
+      "description": "alert for Francesco und Stefania ANON: Ferreira da Silva",
+      "id": 10005,
+      "threshold": 100,
+      "target": {
+        "id": "eoi:17893407",
+        "name": "Francesco und Stefania ANON: Ferreira da Silva",
+        "status": "ACTIVE",
+        "clientScore": 550
+      },
+      "trigger": 10001,
+      "assignedUsers": [
+        {
+          "id": "10003",
+          "email": "ex0210",
+          "externalId": "ex0210"
+        }
+      ],
+      "currentStatus": {
+        "timestamp": 1678177593519,
+        "code": 300,
+        "comment": {
+          "value": "testing",
+          "user": {
+            "id": "10003",
+            "email": "ex0210",
+            "externalId": "ex0210"
+          }
+        }
+      }
+    },
+    "objectAfter": {
+      "state": 2,
+      "score": 550,
+      "docCount": 22,
+      "time": {
+        "created": 1678112290107,
+        "lastUpdated": 1678200692833,
+        "breached": 1678112290149,
+        "lastEvidence": 1678112290149,
+        "lastAssigned": 1678114410494,
+        "closed": 1678200692833,
+        "reopened": 1678177593519
+      },
+      "security": {
+        "orTags1": [
+          "X.CH"
+        ],
+        "enabled": true
+      },
+      "description": "alert for Francesco und Stefania ANON: Ferreira da Silva",
+      "id": 10005,
+      "threshold": 100,
+      "target": {
+        "id": "eoi:17893407",
+        "name": "Francesco und Stefania ANON: Ferreira da Silva",
+        "status": "ACTIVE",
+        "clientScore": 550
+      },
+      "trigger": 10001,
+      "assignedUsers": [
+        {
+          "id": "10003",
+          "email": "ex0210",
+          "externalId": "ex0210"
+        }
+      ],
+      "currentStatus": {
+        "timestamp": 1678200692834,
+        "code": 201,
+        "comment": {
+          "value": "test",
+          "user": {
+            "id": "10003",
+            "email": "ex0210",
+            "externalId": "ex0210"
+          }
+        }
+      }
+    }
+  },
+  "stateHistory": [
+    {
+      "state": "STORED",
+      "timestamp": 1678200693147
+    },
+    {
+      "state": "DELIVERED",
+      "timestamp": 1678200695256
+    }
+  ]
+}
