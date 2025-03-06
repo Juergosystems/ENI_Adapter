@@ -3,8 +3,8 @@ import os
 from flask import Flask
 from flask import request
 
-from . import message_handler as mh
-
+from alert_handler import AlertHandler
+from assessment_handler import AssessmentHandler
 
 def create_app(test_config=None):
     # create and configure the app
@@ -28,12 +28,18 @@ def create_app(test_config=None):
         pass
 
     # a simple page that says hello
-    @app.route('/receiver', methods=['POST'])
-    def receiver():
+    @app.route('/event', methods=['POST'])
+    def event():
         if request.method == 'POST':
-            message_body = request.get_json()
-            mh.routing(message_body)
-            return '{"id": 123, "body": "Message received."}', 200
+            message = request.get_json()
+            if message["data"]["objectType"] == 'alertStateChange':
+                alh = AlertHandler(message)
+                return alh.routing(message)
+            elif message["data"]["objectType"] == 'assessmentStateChange':
+                ash = AssessmentHandler(message)
+                return ash.routing(message)
+            else:
+                return 'Bad Request', 400
         else:
             return 'Method Not Allowed', 405
 
