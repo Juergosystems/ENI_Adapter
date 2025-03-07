@@ -31,30 +31,39 @@ def create_app(config_class=cfg.App):
             
             # Check if there is a request body
             if not request.data:
-                error_message = "Request body is missing"
-                app.logger.error(error_message)
-                return jsonify({"error": error_message}), 400
+                error = "Request body is missing"
+                response = jsonify({"message_id": None, "status": error})
+                app.logger.error(response)
+                return response, 400
             
             # Check if the request body is JSON
             if not request.is_json:
-                error_message = "Request Content-Type must be JSON"
-                app.logger.error(error_message)
-                return jsonify({"error": error_message}), 400
+                error = "Request Content-Type must be JSON"
+                response = jsonify({"message_id": None, "status": error})
+                app.logger.error(response)
+                return response, 400
 
             #Check if the request body is a valid JSON
             if request.get_json(silent=True) is None:
-                error_message = "No valid JSON body found in the request"
-                app.logger.error(error_message)
-                return jsonify({"error": error_message}), 400
-
+                error = "No valid JSON body found in the request"
+                response = jsonify({"message_id": None, "status": error})
+                app.logger.error(response)
+                return response, 400
+            
+            # Parse the JSON body of the ENI message
             message = request.get_json(silent=True)
+
             if message["data"]["objectType"] == 'alertStateChange':
-                app.logger.info("Alert message received")
+                info = "Alert message received"
+                response = jsonify({"message_id": message["id"], "status": info})
+                app.logger.info(response)
                 alh = AlertHandler(message)
                 return alh.routing()
             
             elif message["data"]["objectType"] == 'assessmentStateChange':
-                app.logger.info("Assessment message received")
+                info = "Assessment message received"
+                response = jsonify({"message_id": message["id"], "status": info})
+                app.logger.info(response)
                 ash = AssessmentHandler(message)
                 return ash.routing()
             

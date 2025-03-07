@@ -1,4 +1,7 @@
+from flask import current_app as app
+from flask import request, jsonify
 from config import Config as cfg
+
 
 class AlertHandler:
     def __init__(self, message):
@@ -30,7 +33,10 @@ class AlertHandler:
             if self.alert_before is None:
                 self.new_alert()
             
-            return {"id":self.message_id, "status": "Message successfully processed"}, 200
+            info = "Message successfully processed"
+            response = jsonify({"message_id":self.message_id, "status": info})
+            app.logger.info(response)
+            return response, 200
 
     def new_alert(self):
         if self.state_after == cfg.Alert.State.OPEN:
