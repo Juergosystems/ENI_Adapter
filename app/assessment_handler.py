@@ -35,7 +35,7 @@ class AssessmentHandler:
         
         info = "Message successfully processed"
         response = jsonify({"message_id":self.message_id, "status": info})
-        app.logger.info(response)
+        app.logger.info(response) 
         return response, 200
 
     def new_assessment(self):
