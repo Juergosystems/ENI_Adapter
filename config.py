@@ -1,7 +1,15 @@
+import logging
+
 class Config:
 
     class App:
-            SECRET_KEY = 'qwertyuioplkmjnha5526735gbsgs'
+        DEBUG = True
+        SECRET_KEY = 'qwertyuioplkmjnha5526735gbsgs'
+        
+        LOG_LEVEL = logging.INFO
+        LOG_FORMAT = '%(asctime)s - %(levelname)s - %(message)s - %(pathname)s - in %(funcName)s() - at line %(lineno)d'
+        LOG_FILE = 'logs/app.log'
+
 
     class Alert:
         class State:
