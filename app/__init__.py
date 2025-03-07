@@ -24,10 +24,10 @@ def create_app(config_class=cfg.App):
             message = request.get_json()
             if message["data"]["objectType"] == 'alertStateChange':
                 alh = AlertHandler(message)
-                return alh.routing(message)
+                return alh.routing()
             elif message["data"]["objectType"] == 'assessmentStateChange':
                 ash = AssessmentHandler(message)
-                return ash.routing(message)
+                return ash.routing()
             else:
                 return 'Bad Request', 400
         else:

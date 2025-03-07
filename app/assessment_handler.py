@@ -7,15 +7,15 @@ class AssessmentHandler:
         self.message_time = message["time"]["delivered"]
         self.message_type = message["type"]
         
-        self.assessment_id = message["data"]["object"]["id"]
+        self.assessment_id = message["data"]["objectId"]
 
         self.assessment_before = message["data"]["objectBefore"]
         if self.assessment_before is not None:
             self.state_before = message["data"]["objectBefore"]["state"]
             self.score_before = message["data"]["objectBefore"]["score"]
             self.docCount_before = message["data"]["objectBefore"]["docCount"]
-            self.owner_before = message["data"]["objectBefore"]["security"]["owners"][0]
-            self.assignee_before = message["data"]["objectBefore"]["assignedUsers"][0]["id"]
+            self.owner_before = message["data"]["objectBefore"]["security"]["owners"][0] if message["data"]["objectBefore"]["security"]["owners"] else None
+            self.assignee_before = message["data"]["objectBefore"]["assignedUsers"][0]["id"] if message["data"]["objectBefore"]["assignedUsers"] else None
             self.status_before = message["data"]["objectBefore"]["currentStatus"]["code"]
         
         self.assessment_after = message["data"]["objectAfter"]
@@ -23,8 +23,8 @@ class AssessmentHandler:
             self.state_after = message["data"]["objectAfter"]["state"]
             self.score_after = message["data"]["objectAfter"]["score"]
             self.docCount_after = message["data"]["objectAfter"]["docCount"]
-            self.owner_after = message["data"]["objectAfter"]["security"]["owners"][0]
-            self.assignee_after = message["data"]["objectAfter"]["assignedUsers"][0]["id"]
+            self.owner_after = message["data"]["objectAfter"]["security"]["owners"][0] if message["data"]["objectAfter"]["security"]["owners"] else None
+            self.assignee_after = message["data"]["objectAfter"]["assignedUsers"][0]["id"] if message["data"]["objectAfter"]["assignedUsers"] else None
             self.status_after = message["data"]["objectAfter"]["currentStatus"]["code"]
 
     def routing(self):
