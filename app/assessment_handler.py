@@ -1,6 +1,6 @@
+from config import Config as cfg
+
 class AssessmentHandler:
-    from flask import current_app as app
-    from app import config as cfg
     
     def __init__(self, message):
         self.message_id = message["id"]
@@ -29,11 +29,12 @@ class AssessmentHandler:
 
     def routing(self):
         if self.assessment_before is None:
-            return self.new_assessment()
-        return
+            self.new_assessment()
+        
+        return {"id":self.message_id, "status": "Message successfully processed"}, 200
 
     def new_assessment(self):
-        if self.state_after == cfg.state.open:
+        if self.state_after == cfg.Assessment.State.OPEN:
             return
         return
     
@@ -44,6 +45,7 @@ class AssessmentHandler:
         return
     
     def reopened(self):
+        
         return
 
     def closed(self):
