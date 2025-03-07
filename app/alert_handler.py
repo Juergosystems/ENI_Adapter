@@ -30,13 +30,13 @@ class AlertHandler:
             self.status_after = message["data"]["objectAfter"]["currentStatus"]["code"]
 
     def routing(self):
-            if self.alert_before is None:
-                self.new_alert()
-            
-            info = "Message successfully processed"
-            response = jsonify({"message_id":self.message_id, "status": info})
-            app.logger.info(response)
-            return response, 200
+        if self.alert_before is None:
+            self.new_alert()
+        
+        info = "Message successfully processed"
+        response = jsonify({"message_id":self.message_id, "status": info})
+        app.logger.info(response)
+        return response, 200
 
     def new_alert(self):
         if self.state_after == cfg.Alert.State.OPEN:

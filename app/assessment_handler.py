@@ -1,3 +1,5 @@
+from flask import current_app as app
+from flask import request, jsonify
 from config import Config as cfg
 
 class AssessmentHandler:
@@ -31,7 +33,10 @@ class AssessmentHandler:
         if self.assessment_before is None:
             self.new_assessment()
         
-        return {"id":self.message_id, "status": "Message successfully processed"}, 200
+        info = "Message successfully processed"
+        response = jsonify({"message_id":self.message_id, "status": info})
+        app.logger.info(response)
+        return response, 200
 
     def new_assessment(self):
         if self.state_after == cfg.Assessment.State.OPEN:
