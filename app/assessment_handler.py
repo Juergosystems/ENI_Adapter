@@ -10,6 +10,7 @@ class AssessmentHandler:
         self.message_type = message["type"]
         
         self.assessment_id = message["data"]["objectId"]
+        self.onboarding_key = None
 
         self.assessment_before = message["data"]["objectBefore"]
         if self.assessment_before is not None:
@@ -26,8 +27,14 @@ class AssessmentHandler:
             self.status_before = message["data"]["objectAfter"]["entities"][0]["results"]["status"] if message["data"]["objectAfter"]["entities"][0]["results"] else None
 
     def routing(self):
-        if self.assessment_before is None:
+        if (self.assessment_after is None or self.state_before == cfg.Assessment.State.IN_PROGRESS) and self.state_after in [cfg.Assessment.State.COMPLETED_WITH_HITS, cfg.Assessment.State.COMPLETED_WITHOUT_HITS]:
             self.new_assessment()
+
+        elif self.state_before in [cfg.Assessment.State.COMPLETED_WITH_HITS, cfg.Assessment.State.COMPLETED_WITHOUT_HITS] and self.state_after == cfg.Assessment.State.CLOSED:
+            self.closed_assessment()
+
+        else:
+            self.updated_assessment()
         
         info = "Message successfully processed"
         response = jsonify({"message_id":self.message_id, "status": info})
@@ -35,14 +42,15 @@ class AssessmentHandler:
         return response, 200
 
     def new_assessment(self):
-        if self.state_after == cfg.Assessment.State.OPEN:
-            return
+        app.logger.info("New assessment")
         return
     
     def updated_assessment(self):
+        app.logger.info("Updated assessment")
         return
     
     def closed_assessment(self):
+        app.logger.info("Closed assessment")
         return
     
     

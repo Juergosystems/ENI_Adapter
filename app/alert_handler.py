@@ -10,6 +10,7 @@ class AlertHandler:
         self.message_type = message["type"]
         
         self.alert_id = message["data"]["objectId"]
+        self.person_id = message["data"]["objectAfter"]["target"]["id"][4:] if message["data"]["objectAfter"] else None
 
         self.alert_before = message["data"]["objectBefore"]
         if self.alert_before is not None:
@@ -30,8 +31,17 @@ class AlertHandler:
             self.status_after = message["data"]["objectAfter"]["currentStatus"]["code"]
 
     def routing(self):
-        if self.alert_before is None:
+        if (self.alert_before is None or self.state_before == cfg.Alert.State.MONITORING) and self.state_after == cfg.Alert.State.OPEN:
             self.new_alert()
+
+        elif self.state_before  in [cfg.Alert.State.OPEN, cfg.Alert.State.REOPEN] and self.state_after == cfg.Alert.State.CLOSED:
+            self.closed_alert()
+        
+        elif self.state_before == cfg.Alert.State.CLOSED and self.state_after == cfg.Alert.State.REOPEN:
+            self.reopened_alert()
+
+        else:
+            self.updated_alert()
         
         info = "Message successfully processed"
         response = jsonify({"message_id":self.message_id, "status": info})
@@ -39,17 +49,19 @@ class AlertHandler:
         return response, 200
 
     def new_alert(self):
-        if self.state_after == cfg.Alert.State.OPEN:
-            return
+        app.logger.info("New alert")
         return
     
     def updated_alert(self):
+        app.logger.info("Updated alert")
         return
     
     def closed_alert(self):
+        app.logger.info("Closed alert")
         return
     
     def reopened_alert(self):
+        app.logger.info("Reopened alert")
         return
 
 

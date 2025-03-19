@@ -31,8 +31,9 @@ class Config:
 
     class Assessment:
         class State:
-            MONITORING = 0
-            OPEN = 1
+            IN_PROGRESS = "IN_PROGRESS"
+            COMPLETED_WITH_HITS = "COMPLETED_WITH_HITS"
+            COMPLETED_WITHOUT_HITS = "COMPLETED_WITHOUT_HITS"
             CLOSED = 2
 
         class Status:
