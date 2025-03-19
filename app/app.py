@@ -72,6 +72,6 @@ def event():
             return ash.routing()
         
         else:
-            return 'Bad Request', 400
+            return 'Bad Request', 422
     else:
         return 'Method Not Allowed', 405
