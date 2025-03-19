@@ -1,7 +1,10 @@
 from flask import Blueprint, Response
+from flask import current_app as app
+import traceback
 
 errors = Blueprint("errors", __name__)
 
 @errors.app_errorhandler(Exception)
-def server_error(error):
-    return Response(f"An error occurred in the handling of the ENI message. {error}", status=500)
+def server_error(e):
+    app.logger.error(f"An internal error occurred in the handling of the ENI message. {traceback.format_exc()}")
+    return Response(f"An internal error occurred in the handling of the ENI message.", status=500)
