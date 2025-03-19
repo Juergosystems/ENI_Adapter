@@ -33,21 +33,21 @@ def create_app(config_class=cfg.App):
             if not request.data:
                 error = "Request body is missing"
                 response = jsonify({"message_id": None, "status": error})
-                app.logger.error(response)
+                app.logger.error(response.get_json())
                 return response, 400
             
             # Check if the request body is JSON
             if not request.is_json:
                 error = "Request Content-Type must be JSON"
                 response = jsonify({"message_id": None, "status": error})
-                app.logger.error(response)
+                app.logger.error(response.get_json())
                 return response, 400
 
             #Check if the request body is a valid JSON
             if request.get_json(silent=True) is None:
                 error = "No valid JSON body found in the request"
                 response = jsonify({"message_id": None, "status": error})
-                app.logger.error(response)
+                app.logger.error(response.get_json())
                 return response, 400
             
             # Parse the JSON body of the ENI message
@@ -56,14 +56,14 @@ def create_app(config_class=cfg.App):
             if message["data"]["objectType"] == 'alertStateChange':
                 info = "Alert message received"
                 response = jsonify({"message_id": message["id"], "status": info})
-                app.logger.info(response)
+                app.logger.info(response.get_json())
                 alh = AlertHandler(message)
                 return alh.routing()
             
             elif message["data"]["objectType"] == 'assessmentStateChange':
                 info = "Assessment message received"
                 response = jsonify({"message_id": message["id"], "status": info})
-                app.logger.info(response)
+                app.logger.info(response.get_json())
                 ash = AssessmentHandler(message)
                 return ash.routing()
             
