@@ -1,0 +1,85 @@
+openapi: 3.0.0
+info:
+  title: ENI Adapter
+  description: API for receiving and processing ENI messages
+  version: 1.0.0
+
+paths:
+  /event:
+    post:
+      summary: Receives ENI messages
+      description: Processes ENI messages based on their `objectType`.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: Unique ID of the message
+                data:
+                  type: object
+                  properties:
+                    objectType:
+                      type: string
+                      enum: [alertStateChange, assessmentStateChange]
+                      description: Type of the message
+              required:
+                - id
+                - data
+      responses:
+        "200":
+          description: Message successfully processed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message_id:
+                    type: string
+                    description: ID of the received message
+                  status:
+                    type: string
+                    description: Processing status
+        "400":
+          description: Invalid or missing request (e.g., missing or invalid JSON body, incorrect Content-Type)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message_id:
+                    type: string
+                    nullable: true
+                    description: ID of the message (if available)
+                  status:
+                    type: string
+                    description: Error description
+        "422":
+          description: Unprocessable request (e.g., unknown objectType)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message_id:
+                    type: string
+                    nullable: true
+                    description: ID of the message (if available)
+                  status:
+                    type: string
+                    description: Error description
+        "405":
+          description: Method not allowed
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: Error description
