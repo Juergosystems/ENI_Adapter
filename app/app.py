@@ -7,7 +7,7 @@ from config import Config as cfg
 from app.alert_handler import AlertHandler
 from app.assessment_handler import AssessmentHandler
 from app.utils.logger import init_logger
-from app.error_handler import errors
+from app.utils.error_handler import errors
 
 
 # create and configure the app
