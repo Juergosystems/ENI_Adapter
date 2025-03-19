@@ -43,17 +43,13 @@ class AlertHandler:
             return
         return
     
-    def new_assignee(self):
+    def updated_alert(self):
         return
     
-    def new_status(self):
+    def closed_alert(self):
         return
     
-    def reopened(self):
-        
-        return
-
-    def closed(self):
+    def reopened_alert(self):
         return
 
 

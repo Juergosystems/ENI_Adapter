@@ -39,17 +39,11 @@ class AssessmentHandler:
             return
         return
     
-    def new_assignee(self):
+    def updated_assessment(self):
         return
     
-    def new_status(self):
+    def closed_assessment(self):
         return
     
-    def reopened(self):
-        
-        return
-
-    def closed(self):
-        return
     
     
