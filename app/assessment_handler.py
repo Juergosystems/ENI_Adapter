@@ -16,18 +16,21 @@ class AssessmentHandler:
         if self.assessment_before is not None:
             self.state_before = message["data"]["objectBefore"]["state"]
             self.owner_before = message["data"]["objectBefore"]["security"]["owners"][0] if message["data"]["objectBefore"]["security"]["owners"] else None
-            self.assignee_before = message["data"]["objectBefore"]["entities"][0]["results"]["assignedUser"]["id"] if message["data"]["objectBefore"]["entities"][0]["results"] !={} else None
+            self.assignee_before = message["data"]["objectBefore"]["entities"][0]["results"]["assignedUsers"][0]["id"] if message["data"]["objectBefore"]["entities"][0]["results"] !={} else None
             self.status_before = message["data"]["objectBefore"]["entities"][0]["results"]["status"] if message["data"]["objectBefore"]["entities"][0]["results"] else None
         
         self.assessment_after = message["data"]["objectAfter"]
         if self.assessment_after is not None:
             self.state_after = message["data"]["objectAfter"]["state"]
             self.owner_after = message["data"]["objectAfter"]["security"]["owners"][0] if message["data"]["objectAfter"]["security"]["owners"] else None
-            self.assignee_before = message["data"]["objectAfter"]["entities"][0]["results"]["assignedUser"]["id"] if message["data"]["objectAfter"]["entities"][0]["results"] != {} else None
+            self.assignee_before = message["data"]["objectAfter"]["entities"][0]["results"]["assignedUsers"][0]["id"] if message["data"]["objectAfter"]["entities"][0]["results"] != {} else None
             self.status_before = message["data"]["objectAfter"]["entities"][0]["results"]["status"] if message["data"]["objectAfter"]["entities"][0]["results"] else None
 
     def routing(self):
-        if (self.assessment_after is None or self.state_before == cfg.Assessment.State.IN_PROGRESS) and self.state_after in [cfg.Assessment.State.COMPLETED_WITH_HITS, cfg.Assessment.State.COMPLETED_WITHOUT_HITS]:
+        if self.state_after == cfg.Assessment.State.IN_PROGRESS:
+            app.logger.info("Assessment in Progress")
+        
+        elif (self.assignee_before is None or self.state_before == cfg.Assessment.State.IN_PROGRESS) and self.state_after in [cfg.Assessment.State.COMPLETED_WITH_HITS, cfg.Assessment.State.COMPLETED_WITHOUT_HITS]:
             self.new_assessment()
 
         elif self.state_before in [cfg.Assessment.State.COMPLETED_WITH_HITS, cfg.Assessment.State.COMPLETED_WITHOUT_HITS] and self.state_after == cfg.Assessment.State.CLOSED:

@@ -31,8 +31,11 @@ class AlertHandler:
             self.status_after = message["data"]["objectAfter"]["currentStatus"]["code"]
 
     def routing(self):
-        if (self.alert_before is None or self.state_before == cfg.Alert.State.MONITORING) and self.state_after == cfg.Alert.State.OPEN:
-            self.new_alert()
+        if self.state_after == cfg.Alert.State.MONITORING:
+            app.logger.info("New monitoring Alert")
+
+        elif (self.alert_before is None or self.state_before == cfg.Alert.State.MONITORING) and self.state_after == cfg.Alert.State.OPEN:
+            self.new_open_alert()
 
         elif self.state_before  in [cfg.Alert.State.OPEN, cfg.Alert.State.REOPEN] and self.state_after == cfg.Alert.State.CLOSED:
             self.closed_alert()
@@ -48,7 +51,7 @@ class AlertHandler:
         app.logger.info(response)
         return response, 200
 
-    def new_alert(self):
+    def new_open_alert(self):
         app.logger.info("New alert")
         return
     
